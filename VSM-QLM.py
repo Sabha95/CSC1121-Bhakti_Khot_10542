@@ -157,10 +157,12 @@ def query_likelihood_retrieval(query, smoothing_param=0.1):
 query_tree = ET.parse(QUERY_PATH)
 query_root = query_tree.getroot()
 queries = {}
+query_id = 1
 for doc in query_root.findall("top"):
-    query_id = doc.find("num").text.strip()
+    # query_id = doc.find("num").text.strip()
     query_text = doc.find("title").text.strip()
     queries[query_id] = query_text
+    query_id += 1
 
 with open(OUTPUT_VSM, "w") as vsm_file, open(OUTPUT_BOOLEAN, "w") as boolean_file, open(OUTPUT_QLM, "w") as qlm_file:
     for query_id, query_text in queries.items():
