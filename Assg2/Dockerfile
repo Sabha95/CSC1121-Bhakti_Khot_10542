@@ -6,10 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set working directory
-WORKDIR /app
+WORKDIR /Assg2
 
 # Copy files
-COPY . /app
+COPY . /Assg2
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -29,4 +29,4 @@ RUN python -m nltk.downloader punkt stopwords
 EXPOSE 5000
 
 # Run the app
-CMD ["python", "image_search_engine.py"]
+CMD ["python", "flash.py"]
