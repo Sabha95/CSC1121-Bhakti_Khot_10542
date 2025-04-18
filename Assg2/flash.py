@@ -92,7 +92,8 @@ def search(query, top_k=10):
 
 # Flask App Setup
 app = Flask(__name__)
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
 @app.route("/<path:filename>")
 def serve_image(filename):
     return send_from_directory("", filename)
@@ -107,4 +108,4 @@ def index():
     return render_template("index.html", results=results)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

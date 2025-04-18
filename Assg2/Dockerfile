@@ -29,4 +29,4 @@ RUN python -m nltk.downloader punkt stopwords
 EXPOSE 5000
 
 # Run the app
-CMD ["python", "flash.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000" "flash.py"]
