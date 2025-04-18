@@ -12,6 +12,7 @@ from flask import Flask, request, render_template, send_from_directory
 # Download NLTK resources
 nltk.download("punkt")
 nltk.download("stopwords")
+nltk.download("punkt_tab")
 
 # Initialize NLP tools
 stemmer = PorterStemmer()
