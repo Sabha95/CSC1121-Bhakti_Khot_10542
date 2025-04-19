@@ -19,7 +19,7 @@ stemmer = PorterStemmer()
 stop_words = set(stopwords.words("english"))
 
 # Load image metadata
-with open("image_metadata_blip8.json", "r", encoding="utf-8") as f:
+with open("image_metadata_drive2.json", "r", encoding="utf-8") as f:
     images = json.load(f)
 
 # Preprocess and build corpus
@@ -35,7 +35,7 @@ def preprocess(text):
 
 
 for img in images:
-    img_id = img["local_path"]
+    img_id = img["url"]
     surrogate_text = f"{img.get('alt_text', '')} {img.get('figcaption', '')} {img.get('title', '')} {img.get('vision_caption', '')}"
     tokens = preprocess(surrogate_text)
     corpus[img_id] = tokens
@@ -108,4 +108,11 @@ def index():
     return render_template("index.html", results=results)
 
 if __name__ == "__main__":
+    # app.run(debug=True)
     app.run(host="0.0.0.0", port=5000)
+
+# # /https://drive.google.com/uc%3Fexport=view&id=1rlPJcajkqszhFjKatfaxWcyk9iM7YLYU
+# # https://drive.google.com/file/d/1RFy6G_vbRdYY1sIlW5PCXthjzAQxztCa/view?usp=drive_link
+
+# https://drive.google.com/uc?export=view&id=
+# https://drive.google.com/uc/3Fexport=view&id=1rlPJcajkqszhFjKatfaxWcyk9iM7YLYU
